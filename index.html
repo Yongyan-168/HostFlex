@@ -1,0 +1,42 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>  
+    <title>Document</title>  
+</head>  
+<body>  
+    <div class="cart">  
+        
+    </div>  
+</body>  
+
+<script>  
+    $(document).ready(function(){  
+          var settings = {
+          "url": "https://testapi-0t9x.onrender.com/Program",
+          "method": "GET",
+          "timeout": 0,
+          "headers": {
+              "Content-Type": "application/json"
+          },
+          "data": JSON.stringify({
+              "title": "Project collections",
+              "views": 101
+          }),
+      };
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+    console.log(response[0].name);
+    console.log(response[0].image);
+    var row = $(".cart");
+    var html ="";
+    html += `<img src="${response[0].image}" alt="">
+                <p>${response[0].name}</p>`;
+    row.append(html);
+});
+})
+</script>  
+</html>
